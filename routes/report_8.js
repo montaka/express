@@ -1,11 +1,19 @@
-
 var express = require('express');
 var router = express.Router();
-const request =require("request");
-const options ={
-    url:"https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=c222f449baeae3d5d34ab1c345537ed2",
-    method:"GET",};
+const request = require('request');
+const cors =require('cors');
+
+router.use(cors());
 
 
+
+router.get('/', async (req, res) => {
+request('https://dog.ceo/api/breeds/image/random', function (error, response, body) {
+if (!error && response.statusCode == 200) {
+const data = JSON.parse(body);
+res.json(data);
+}
+});
+})
 
 module.exports = router;
